@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
@@ -33,6 +34,20 @@ def since_view(request, date: datetime):
     msg = f'Contact date: {daysi}'
     return HttpResponse(msg)
 
+
+DATA = [str(i) for i in range(10000)]
+
+## 127.0.0.1:8000/pagi?page=1
+def pagi_view(request):
+    paginator = Paginator(DATA, 10)
+    page_number = int(request.GET.get('page', 7))
+    page_obj = paginator.get_page(page_number)
+    if page_obj.has_next():
+        page_obj.next_page_number()
+    if page_obj.has_previous():
+        page_obj.previous_page_number()
+    msg = '<br>'.join(page_obj.object_list)
+    return HttpResponse(msg)
 
 
 
