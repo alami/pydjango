@@ -49,5 +49,27 @@ def pagi_view(request):
     msg = '<br>'.join(page_obj.object_list)
     return HttpResponse(msg)
 
+class User:
+    def __init__(self,name):
+        self.name = name
+    def upper_name(self):
+        return self.name.upper()
+    def cut_name(self, n):
+        return self.name[:n]
+
+
+def data_view(request):
+    u=User('Vova')
+    context={
+        'first_name':'Jake',
+        'last_name':'The Dog',
+        'user': u,
+    }
+    return render (request,'app/data.html',context={
+        'first_name':'Jake',
+        'last_name':'<h2>The Dog</h2>',
+        'user': u,
+        'marks':[2,4,6,8]
+    })
 
 

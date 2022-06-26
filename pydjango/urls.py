@@ -18,7 +18,7 @@ from datetime import datetime
 from django.contrib import admin
 from django.urls import path, reverse, register_converter
 
-from app.views import hello_view, test_view, home_view, contact_view, since_view, pagi_view
+from app.views import hello_view, test_view, home_view, contact_view, since_view, pagi_view, data_view
 
 
 class DataConverter:
@@ -39,6 +39,7 @@ urlpatterns = [
     path('contact/', contact_view, name='contact'),
     path('since/<dt:date>/', since_view, name='since'),
     path('pagi/', pagi_view, name='pagi'),  ##http://127.0.0.1:8000/hello?name=Alisher
+    path('data/', data_view, name='data'),  ##http://127.0.0.1:8000/hello?name=Alisher
 ]
 
 print(reverse('hello'))

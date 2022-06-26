@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body style="background: azure">
+<h1>Hello Application</h1>
+    {{first_name}}<br>
+    {{last_name|safe}}
+<pre>
+    {{user.name}}
+    {{user.upper_name}}
+    {{ marks }}
+    {% for mark in marks %}
+        {{ mark }}
+    {% endfor %}
+
+    {{name.strip}}
+    {{some_dict.key}}
+</pre></body>
+</html>
