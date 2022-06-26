@@ -28,12 +28,8 @@ def hello_view(request):
     return HttpResponse(msg)
 
 # 127.0.0.1:8000/since/2020-01-01/
-def since_view(request,date):
-    try:
-        dt=datetime.strptime(date,'%Y-%m-%d')
-    except:
-        raise Http404()
-    daysi = (datetime.now() - dt).days
+def since_view(request, date: datetime):
+    daysi = (datetime.now() - date).days
     msg = f'Contact date: {daysi}'
     return HttpResponse(msg)
 
